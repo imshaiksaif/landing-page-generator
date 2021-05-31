@@ -1,0 +1,21 @@
+{
+  "name": "landingpage-server",
+  "version": "1",
+  "main": "index.js",
+  "author": "Saif Ali",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc",
+    "deploy": "yarn build && serverless deploy"
+  },
+  "dependencies": {
+    "@types/aws-lambda": "^8.10.76",
+    "@types/aws-sdk": "^2.7.0",
+    "@types/node-fetch": "^2.5.10",
+    "apollo-server": "^2.25.0",
+    "apollo-server-lambda": "^2.25.0",
+    "aws-lambda": "^1.0.6",
+    "aws-sdk": "^2.918.0",
+    "graphql": "^15.5.0"
+  }
+}
