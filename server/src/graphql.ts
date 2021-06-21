@@ -1,20 +1,43 @@
 import { ApolloServer, gql } from 'apollo-server-lambda';
+import { updateUser, createPage } from "./mutations";
+import { allPages, page } from './queries';
 
 const schema = gql`
-  type Hello {
-    world: String
+  type User {
+    userId: String
+    createdAt: String
+    lastSignedInAt: String
   }
 
+  type LandingPage {
+    userId: String
+    pageId: String
+    createdAt: String
+    lastUpdatedAt: String
+    pageName: String
+    content: String
+  }
+
+
   type Query {
-    hello: Hello 
+    allPages: [LandingPage]
+    page(userId: String, pageId: String): LandingPage 
+  }
+
+  type Mutation {
+    updateUser(userId: String): User
+    createPage(userId: String, pageName: String): LandingPage
   }
 `;
 
 const resolvers = {
   Query: {
-    hello: () => ({
-      world: "imshaiksaif.dev"
-    })
+    allPages,
+    page
+  },
+  Mutation: {
+    updateUser,
+    createPage
   }
 }
 
